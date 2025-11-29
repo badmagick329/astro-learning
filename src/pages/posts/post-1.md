@@ -4,8 +4,8 @@ pubDate: 2025-11-29
 author: Me
 description: A beginner's guide to understanding the basics and getting the most out of our services.
 image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
+    url: 'https://images.pexels.com/photos/842548/pexels-photo-842548.jpeg'
+    alt: 'platform image'
 tags: [getting-started, guide, basics]
 layout: "../../layouts/MarkdownLayout.astro"
 ---

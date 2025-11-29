@@ -1,0 +1,38 @@
+---
+import MainHeading from "../../components/MainHeading.astro";
+import Navbar from "../../components/Navbar.astro";
+import Layout from "../../layouts/Layout.astro";
+import type { Post } from "../../types/post";
+
+const allPosts = Object.values(
+  import.meta.glob<Post>("../posts/*md", {
+    eager: true,
+  }),
+);
+const tags = [
+  ...new Set(allPosts.flatMap((p) => p.frontmatter.tags.map((t) => t))),
+];
+const numberOfPostsWithTag = (tags: string) =>
+  allPosts.filter((p) => p.frontmatter.tags.includes(tags)).length;
+---
+
+<Layout title="Tag Index">
+  <main class="mt-8 flex flex-col items-center gap-4">
+    <Navbar />
+    <MainHeading content="Tags" />
+    <ul>
+      {
+        tags.map((t) => (
+          <li>
+            <a
+              class="text-info font-semibold hover:underline"
+              href={`/tags/${t}`}
+            >
+              {t} ({numberOfPostsWithTag(t)})
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Layout>

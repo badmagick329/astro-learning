@@ -1,5 +1,6 @@
 ---
 import BlogPostLink from "../../components/BlogPostLink.astro";
+import Navbar from "../../components/Navbar.astro";
 import Layout from "../../layouts/Layout.astro";
 import type { Post } from "../../types/post";
 
@@ -23,14 +24,15 @@ const filteredPosts = posts.filter((p) => p.frontmatter.tags.includes(tag));
 ---
 
 <Layout title={tag}>
-  <div class="mt-8 flex flex-col items-center gap-4">
+  <main class="mt-8 flex flex-col items-center gap-4">
+    <Navbar />
     <p class="mb-4">Posts tagged with {tag}</p>
-    <ul>
+    <ul class="flex flex-col gap-8">
       {
         filteredPosts.map((post) => (
           <BlogPostLink url={post.url || ""} title={post.frontmatter.title} />
         ))
       }
     </ul>
-  </div>
+  </main>
 </Layout>

@@ -1,12 +1,12 @@
 ---
 title: The Future of Remote Work
-pubDate: 2025-11-29
+pubDate: 2025-10-01
 author: Author Name
 description: Exploring trends, challenges, and opportunities in the evolving world of remote work.
 image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
-tags: [remote-work, trends, future]
+    url: 'https://media.istockphoto.com/id/1022048344/photo/staring-at-the-screen-but-nothings-going-in.jpg?s=612x612&w=0&k=20&c=0-ebTNxd1LWV1nK-6ujSHckZPqdq81YUXkuyof9jppo='
+    alt: 'remote work image'
+tags: [remote-work, trends, future, lifestyle]
 layout: "../../layouts/MarkdownLayout.astro"
 ---
 
