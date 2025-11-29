@@ -5,9 +5,9 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
-  <main class="flex flex-col items-center gap-4 mt-8">
+  <main class="mt-8 flex flex-col items-center gap-4">
     <Navbar />
-    <article class="prose dark:prose-invert max-w-2xl mx-auto">
+    <article class="prose dark:prose-invert mx-auto max-w-2xl">
       <slot />
     </article>
   </main>
