@@ -17,5 +17,23 @@ const blog = defineCollection({
     tags: z.array(z.string()),
   }),
 });
-// Export a single `collections` object to register your collection(s)
-export const collections = { blog };
+
+const posts = defineCollection({
+  loader: async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await response.json();
+    return data.map((post: any) => ({
+      id: String(post.id),
+      userId: post.userId,
+      title: post.title,
+      body: post.body,
+    }));
+  },
+  schema: z.object({
+    userId: z.number(),
+    title: z.string(),
+    body: z.string(),
+  }),
+});
+
+export const collections = { blog, posts };

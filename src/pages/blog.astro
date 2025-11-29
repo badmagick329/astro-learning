@@ -6,6 +6,7 @@ import BlogPostLink from "../components/BlogPostLink.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog");
+const otherPosts = await getCollection("posts");
 ---
 
 <Layout title="Home" description="Welcome to the Astro homepage">
@@ -20,5 +21,7 @@ const allPosts = await getCollection("blog");
         ))
       }
     </ul>
+    <p>JSON placeholder example:</p>
+    {otherPosts.map((p) => <p>{p.data.title}</p>)}
   </main>
 </Layout>
