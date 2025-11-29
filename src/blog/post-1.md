@@ -4,10 +4,9 @@ pubDate: 2025-11-29
 author: Me
 description: A beginner's guide to understanding the basics and getting the most out of our services.
 image:
-    url: 'https://images.pexels.com/photos/842548/pexels-photo-842548.jpeg'
-    alt: 'platform image'
+  url: "https://images.pexels.com/photos/842548/pexels-photo-842548.jpeg"
+  alt: "platform image"
 tags: [getting-started, guide, basics]
-layout: "../../layouts/MarkdownLayout.astro"
 ---
 
 ## Introduction
@@ -21,9 +20,11 @@ Understanding the fundamentals sets you up for success. In this post, we'll walk
 ## Key Concepts
 
 ### Concept One
+
 This is where you explain your first key idea. Break it down into digestible pieces and provide real-world examples that your audience can relate to.
 
 ### Concept Two
+
 Your second main point goes here. Remember to focus on clarity and practical applications.
 
 ## Getting Started
@@ -38,6 +39,7 @@ Follow these simple steps to begin:
 ## Next Steps
 
 Now that you understand the basics, consider diving deeper into:
+
 - Advanced features
 - Best practices
 - Integration options

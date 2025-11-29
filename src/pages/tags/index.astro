@@ -1,19 +1,13 @@
 ---
+import { getCollection } from "astro:content";
 import MainHeading from "../../components/MainHeading.astro";
 import Navbar from "../../components/Navbar.astro";
 import Layout from "../../layouts/Layout.astro";
-import type { Post } from "../../types/post";
 
-const allPosts = Object.values(
-  import.meta.glob<Post>("../posts/*md", {
-    eager: true,
-  }),
-);
-const tags = [
-  ...new Set(allPosts.flatMap((p) => p.frontmatter.tags.map((t) => t))),
-];
+const allPosts = await getCollection("blog");
+const tags = [...new Set(allPosts.flatMap((p) => p.data.tags.map((t) => t)))];
 const numberOfPostsWithTag = (tags: string) =>
-  allPosts.filter((p) => p.frontmatter.tags.includes(tags)).length;
+  allPosts.filter((p) => p.data.tags.includes(tags)).length;
 ---
 
 <Layout title="Tag Index">

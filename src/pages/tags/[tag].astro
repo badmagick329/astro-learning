@@ -1,17 +1,13 @@
 ---
+import { getCollection } from "astro:content";
 import BlogPostLink from "../../components/BlogPostLink.astro";
 import Navbar from "../../components/Navbar.astro";
 import Layout from "../../layouts/Layout.astro";
-import type { Post } from "../../types/post";
 
 export async function getStaticPaths() {
-  const allPosts = Object.values(
-    import.meta.glob<Post>("../posts/*md", {
-      eager: true,
-    }),
-  );
+  const allPosts = await getCollection("blog");
   return allPosts.flatMap((p) =>
-    [...new Set(p.frontmatter.tags)].map((t) => ({
+    [...new Set(p.data.tags)].map((t) => ({
       params: { tag: t },
       props: { posts: allPosts },
     })),
@@ -20,7 +16,7 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
-const filteredPosts = posts.filter((p) => p.frontmatter.tags.includes(tag));
+const filteredPosts = posts.filter((p) => p.data.tags.includes(tag));
 ---
 
 <Layout title={tag}>
@@ -30,7 +26,7 @@ const filteredPosts = posts.filter((p) => p.frontmatter.tags.includes(tag));
     <ul class="flex flex-col gap-8">
       {
         filteredPosts.map((post) => (
-          <BlogPostLink url={post.url || ""} title={post.frontmatter.title} />
+          <BlogPostLink url={`/posts/${post.id}`} title={post.data.title} />
         ))
       }
     </ul>
