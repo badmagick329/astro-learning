@@ -2,11 +2,24 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import MainHeading from "../components/MainHeading.astro";
+import Greeting from "../components/Greeting";
+
+const amusingGreetings = [
+  "Welcome. The coffee's virtual, but the vibes are real.",
+  "You found me. I was starting to worry.",
+  "Plot twist: you're the main character now.",
+  "Loading personality... just kidding, I'm always like this.",
+  "Finally, someone with excellent taste in websites.",
+  "I see you've chosen violence (against boredom).",
+  "This page has been expecting you.",
+  "Welcome to the good part of the internet.",
+];
 ---
 
 <Layout title="Home" description="Welcome to the Astro homepage">
   <main class="mt-8 flex flex-col items-center gap-4">
     <Navbar />
-    <MainHeading content="Hi 🫥" />
+    <Greeting client:load messages={amusingGreetings} />
+    <MainHeading content="🫥" />
   </main>
 </Layout>
