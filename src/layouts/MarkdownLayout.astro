@@ -1,6 +1,21 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Layout from "./Layout.astro"; // your base layout
+
+interface Props {
+  frontmatter: {
+    title: string;
+    pubDate: string;
+    description: string;
+    image: {
+      url: string;
+      alt: string;
+    };
+    tags: string[];
+    layout: string;
+  };
+}
+
 const { frontmatter } = Astro.props;
 ---
 
