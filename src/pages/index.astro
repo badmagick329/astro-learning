@@ -1,11 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/header.astro";
+import Header from "../components/Navbar.astro";
+import MainHeading from "../components/MainHeading.astro";
 ---
 
 <Layout title="Home" description="Welcome to the Astro homepage">
-  <main class="flex flex-col items-center gap-4 pt-8">
+  <main class="flex flex-col items-center gap-4 mt-8">
     <Header />
-    <h1 class="text-8xl font-black">Hi 🫥</h1>
+    <MainHeading content="Hi 🫥" />
   </main>
 </Layout>
