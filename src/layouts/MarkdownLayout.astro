@@ -1,0 +1,14 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Layout from "./Layout.astro"; // your base layout
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title} description={frontmatter.description}>
+  <main class="flex flex-col items-center gap-4 mt-8">
+    <Navbar />
+    <article class="prose dark:prose-invert max-w-2xl mx-auto">
+      <slot />
+    </article>
+  </main>
+</Layout>
