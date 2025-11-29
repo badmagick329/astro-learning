@@ -4,7 +4,7 @@ pubDate: 2025-11-29
 author: Me
 description: A beginner's guide to understanding the basics and getting the most out of our services.
 image:
-  url: "https://images.pexels.com/photos/842548/pexels-photo-842548.jpeg"
+  url: "/images/blog/post-1.webp"
   alt: "platform image"
 tags: [getting-started, guide, basics]
 ---

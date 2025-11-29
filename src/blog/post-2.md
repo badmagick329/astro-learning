@@ -4,7 +4,7 @@ pubDate: 2025-09-29
 author: Author Name
 description: Simple, actionable strategies to help you accomplish more and feel less overwhelmed.
 image:
-  url: "https://media.istockphoto.com/id/1393379238/photo/work-performance-is-influenced-by-skills-abilities-and-competence-the-concept-of-the.jpg?s=612x612&w=0&k=20&c=JmF3ow_Nn1jLVsjVWSmrCgBpJhJ3FnxX2rVIxWlO68Q="
+  url: "/images/blog/post-2.webp"
   alt: "productivity image"
 tags: [productivity, tips, lifestyle, guide]
 ---
