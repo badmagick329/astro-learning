@@ -1,19 +1,10 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Layout from "./Layout.astro"; // your base layout
+import type { PostFrontmatter } from "../types/post";
 
 interface Props {
-  frontmatter: {
-    title: string;
-    pubDate: Date;
-    description: string;
-    image: {
-      url: string;
-      alt: string;
-    };
-    tags: string[];
-    layout: string;
-  };
+  frontmatter: PostFrontmatter;
 }
 
 const { frontmatter } = Astro.props;

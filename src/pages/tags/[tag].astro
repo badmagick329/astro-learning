@@ -1,0 +1,36 @@
+---
+import BlogPostLink from "../../components/BlogPostLink.astro";
+import Layout from "../../layouts/Layout.astro";
+import type { Post } from "../../types/post";
+
+export async function getStaticPaths() {
+  const allPosts = Object.values(
+    import.meta.glob<Post>("../posts/*md", {
+      eager: true,
+    }),
+  );
+  return allPosts.flatMap((p) =>
+    [...new Set(p.frontmatter.tags)].map((t) => ({
+      params: { tag: t },
+      props: { posts: allPosts },
+    })),
+  );
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+const filteredPosts = posts.filter((p) => p.frontmatter.tags.includes(tag));
+---
+
+<Layout title={tag}>
+  <div class="mt-8 flex flex-col items-center gap-4">
+    <p class="mb-4">Posts tagged with {tag}</p>
+    <ul>
+      {
+        filteredPosts.map((post) => (
+          <BlogPostLink url={post.url || ""} title={post.frontmatter.title} />
+        ))
+      }
+    </ul>
+  </div>
+</Layout>
