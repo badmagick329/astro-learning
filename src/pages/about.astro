@@ -2,11 +2,20 @@
 import Navbar from "../components/Navbar.astro";
 import MainHeading from "../components/MainHeading.astro";
 import Layout from "../layouts/Layout.astro";
+
+const favouriteLanguage = "typescript";
+const icons = {
+  rust: "🦀",
+} as { [key: string]: string };
 ---
 
 <Layout title="Home" description="Welcome to the Astro homepage">
   <main class="mt-8 flex flex-col items-center gap-4">
     <Navbar />
     <MainHeading content="About" />
+    <p>
+      My favourite language is {favouriteLanguage}
+      {icons[favouriteLanguage] ? icons[favouriteLanguage] : ":)"}
+    </p>
   </main>
 </Layout>
