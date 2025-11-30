@@ -1,21 +1,28 @@
-<div>
-  <a
-    class="text-info border-boder nav-link border bg-[rgb(20,20,80)] p-2 font-bold hover:underline"
-    href="/">Home</a
-  >
-  <a
-    class="text-info border-boder nav-link border bg-[rgb(20,20,80)] p-2 font-bold hover:underline"
-    href="/about/">About</a
-  >
-  <a
-    class="text-info border-boder nav-link border bg-[rgb(20,20,80)] p-2 font-bold hover:underline"
-    href="/blog/">Blog</a
-  >
-  <a
-    class="text-info border-boder nav-link border bg-[rgb(20,20,80)] p-2 font-bold hover:underline"
-    href="/tags/">Tags Index</a
-  >
+---
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<nav class="flex flex-wrap items-center justify-between gap-2 p-2">
+  <div class="flex flex-wrap gap-1">
+    <a
+      class="nav-link border-border hover:bg-accent rounded border px-3 py-2 font-bold text-white transition-colors hover:text-white/60 hover:underline"
+      href="/">Home</a
+    >
+    <a
+      class="nav-link border-border hover:bg-accent rounded border px-3 py-2 font-bold text-white transition-colors hover:text-white/60 hover:underline"
+      href="/about/">About</a
+    >
+    <a
+      class="nav-link border-border hover:bg-accent rounded border px-3 py-2 font-bold text-white transition-colors hover:text-white/60 hover:underline"
+      href="/blog/">Blog</a
+    >
+    <a
+      class="nav-link border-border hover:bg-accent rounded border px-3 py-2 font-bold text-white transition-colors hover:text-white/60 hover:underline"
+      href="/tags/">Tags Index</a
+    >
+  </div>
+  <ThemeToggle />
   <script>
     import "../scripts/nav-link.js";
   </script>
-</div>
+</nav>

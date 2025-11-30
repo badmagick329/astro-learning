@@ -1,0 +1,132 @@
+---
+/**
+ * Theme Toggle Component
+ *
+ * Allows switching between light, dark, and system preference modes.
+ * Persists choice to localStorage and applies immediately without flash.
+ */
+---
+
+<div class="theme-toggle flex items-center gap-2">
+  <select
+    id="theme-select"
+    class="border-border bg-primary text-primary-foreground focus:ring-ring hidden h-9 rounded-md border px-3 py-1 text-sm focus:ring-2 focus:outline-none sm:block"
+    aria-label="Select theme"
+  >
+    <option value="system">System</option>
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+  </select>
+</div>
+
+<script>
+  function initTheme() {
+    const themeToggleBtn = document.getElementById("theme-toggle-btn");
+    const themeSelect = document.getElementById(
+      "theme-select",
+    ) as HTMLSelectElement;
+
+    // Get stored theme or default to 'system'
+    const getStoredTheme = (): "light" | "dark" | "system" => {
+      if (typeof localStorage !== "undefined") {
+        const stored = localStorage.getItem("theme");
+        if (stored === "light" || stored === "dark" || stored === "system") {
+          return stored;
+        }
+      }
+      return "system";
+    };
+
+    // Get the actual theme to apply based on stored preference
+    const getEffectiveTheme = (
+      preference: "light" | "dark" | "system",
+    ): "light" | "dark" => {
+      if (preference === "system") {
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+      return preference;
+    };
+
+    // Apply theme to document
+    const applyTheme = (theme: "light" | "dark") => {
+      const root = document.documentElement;
+
+      if (theme === "dark") {
+        root.classList.add("dark");
+        root.classList.remove("light");
+      } else {
+        root.classList.add("light");
+        root.classList.remove("dark");
+      }
+    };
+
+    // Set theme and persist to localStorage
+    const setTheme = (preference: "light" | "dark" | "system") => {
+      localStorage.setItem("theme", preference);
+      const effectiveTheme = getEffectiveTheme(preference);
+      applyTheme(effectiveTheme);
+
+      // Update select if it exists
+      if (themeSelect) {
+        themeSelect.value = preference;
+      }
+    };
+
+    // Initialize on page load
+    const storedTheme = getStoredTheme();
+    applyTheme(getEffectiveTheme(storedTheme));
+
+    if (themeSelect) {
+      themeSelect.value = storedTheme;
+    }
+
+    // Toggle button cycles: light -> dark -> system -> light
+    themeToggleBtn?.addEventListener("click", () => {
+      const current = getStoredTheme();
+      const next =
+        current === "light" ? "dark" : current === "dark" ? "system" : "light";
+      setTheme(next);
+    });
+
+    // Dropdown select
+    themeSelect?.addEventListener("change", (e) => {
+      const value = (e.target as HTMLSelectElement).value as
+        | "light"
+        | "dark"
+        | "system";
+      setTheme(value);
+    });
+
+    // Listen for system preference changes
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const storedTheme = getStoredTheme();
+        if (storedTheme === "system") {
+          applyTheme(e.matches ? "dark" : "light");
+        }
+      });
+  }
+
+  // Run on initial load
+  initTheme();
+
+  // Re-run after Astro page transitions
+  document.addEventListener("astro:after-swap", initTheme);
+</script>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
