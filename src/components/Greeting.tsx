@@ -13,7 +13,7 @@ export default function Greeting({ messages }: { messages: string[] }) {
   const [greeting, setGreeting] = useState(messages[0]);
 
   return (
-    <main className="mt-8 flex flex-col items-center gap-4">
+    <div className="mt-8 flex flex-col items-center gap-4">
       <h3 className="text-4xl font-black">{greeting}</h3>
       <button
         className="bg-primary border-border hover:bg-primary/80 text-primary-foreground px-2 py-1 hover:cursor-pointer"
@@ -21,6 +21,6 @@ export default function Greeting({ messages }: { messages: string[] }) {
       >
         Generate new greeting
       </button>
-    </main>
+    </div>
   );
 }

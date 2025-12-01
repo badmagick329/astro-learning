@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import MainHeading from "../components/MainHeading.astro";
 import Greeting from "../components/Greeting";
+import CardExample from "../components/CardExample.astro";
 
 const amusingGreetings = [
   "Welcome. The coffee's virtual, but the vibes are real.",
@@ -21,5 +22,6 @@ const amusingGreetings = [
     <Navbar />
     <Greeting client:load messages={amusingGreetings} />
     <MainHeading content="🫥" />
+    <CardExample />
   </main>
 </Layout>
